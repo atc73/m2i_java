@@ -1,0 +1,86 @@
+package Package_1;
+
+import java.util.Scanner;
+
+public class Second {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        boolean quit = false;
+
+        do {
+
+            System.out.println(
+                    "1) addition" + "\n" +
+                            "2) soustraction" + "\n" +
+                            "3) multiplication" + "\n" +
+                            "4) pair ou impair" + "\n" +
+                            "5) factorielle" + "\n" +
+                            "6) quitter le jeu"
+            );
+
+
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.println("Choisir le premier nombre de l'addition");
+                    int firstNumToAdd = sc.nextInt();
+                    System.out.println("Choisir le deuxième nombre de l'addition");
+                    int secondNumToAdd = sc.nextInt();
+                    System.out.println("\n" + "Le résulat de l'addition est " + (firstNumToAdd + secondNumToAdd) + "\n" );
+                    break;
+
+                case 2:
+                    System.out.println("Choisir le premier nombre de la soustraction");
+                    int firstNumToSubstract = sc.nextInt();
+                    System.out.println("Choisir le deuxième nombre de la soustraction");
+                    int secondNumToSubstract = sc.nextInt();
+                    System.out.println("\n" +"Le résulat de la soustraction est " + (firstNumToSubstract - secondNumToSubstract) + "\n");
+                    break;
+
+                case 3:
+                    System.out.println("Choisir le premier nombre de la multiplication");
+                    int firstNumToMultiply = sc.nextInt();
+                    System.out.println("Choisir le deuxième nombre de la multiplication");
+                    int secondNumToMultiply = sc.nextInt();
+                    System.out.println("\n" + "Le résultat de la multiplication est " + (firstNumToMultiply * secondNumToMultiply) + "\n");
+                    break;
+
+                case 4:
+                    System.out.println("Entrer un nombre pour savoir s'il est pair");
+                    int isNumEven = sc.nextInt();
+                    if (isNumEven % 2 == 0) {
+                        System.out.println("\n" + "Le nombre est pair" + "\n");
+                    } else {
+                        System.out.println("\n" + "Le nombre est impair" + "\n");
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("\n" + "Entrer un nombre pour trouver sa factorielle" + "\n");
+                    long factOfNum = sc.nextLong();
+                    long fact = 1;
+                    for(int i=1;i<=factOfNum;i++){
+                        fact=fact*i;
+                    }
+
+                    System.out.println("\n" + "La factorielle de "+ factOfNum +" est : "+ fact + "\n");
+                    break;
+
+                case 6:
+                    System.out.println("Vous avez quitté le jeu");
+                    quit = true;
+                    break;
+
+                default:
+                    System.out.println("Choix incorrect");
+                    break;
+
+
+            }
+
+        } while (quit != true);
+    }
+}
