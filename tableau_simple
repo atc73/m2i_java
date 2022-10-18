@@ -1,0 +1,46 @@
+package Package_1;
+
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Combien avez-vous d'élèves ?");
+
+        int numOfStudent = sc.nextInt();
+
+        Integer[] grades = new Integer[numOfStudent];
+
+
+        for (int i = 0; i < grades.length; i++) {
+            System.out.println("Insérer une note");
+            int note = sc.nextInt();
+            grades[i] = note;
+        }
+
+
+        int sum = 0;
+
+        for (int i = 0; i < grades.length; i++) {
+            sum += grades[i];
+        }
+
+
+        double average = sum / grades.length;
+
+        int min = Collections.min(Arrays.asList(grades));
+        int max = Collections.max(Arrays.asList(grades));
+
+        System.out.println("La moyenne de la classe est " + average + "\n" +
+                "la moins bonne note est " + min + "\n" +
+                "la meilleure note est " + max
+        );
+
+
+    }
+}
