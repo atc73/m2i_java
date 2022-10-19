@@ -1,0 +1,47 @@
+System.out.println("Combien avez-vous d'élèves ?");
+        int nbEleves = sc.nextInt();
+        System.out.println("Combien avez-vous de matières ?");
+        int nbMatieres = sc.nextInt();
+        int nbNotes = 0;
+        int[][][] notesElevesMatieres = new int[nbMatieres][nbEleves][];
+        for(int i = 0; i < nbMatieres; i++){
+            // chaque i correspond à une matière, pour laquelle on passe en revue chaque élève qui pourra avoir son propre nombre de notes
+            for(int j = 0; j < nbEleves; j++){
+
+                System.out.println("Saisissez le nombre de notes de l'élève " + j + " dans la matière " + i);
+                nbNotes = sc.nextInt();
+                notesElevesMatieres[i][j] = new int[nbNotes];
+                System.out.println("Saisissez les notes de l'élève " + j + " dans la matière " + i);
+                for(int k = 0; k < nbNotes; k++){
+                    notesElevesMatieres[i][j][k] = sc.nextInt();
+                }
+            }
+        }
+        float[][] moyParMatieresParEleve = new float[nbMatieres][nbEleves];
+        for(int j = 0; j < nbEleves; j++){
+            for(int i = 0; i < nbMatieres; i++) {
+
+                int total = 0;
+                for (int k = 0; k < notesElevesMatieres[i][j].length; k++) {
+                    total += notesElevesMatieres[i][j][k];
+                }
+                moyParMatieresParEleve[i][j] = (float) total / notesElevesMatieres[i][j].length;
+                System.out.println("La moyenne de l'élève " + j + " dans la matière " + i + " est " + ((float) total / notesElevesMatieres[i][j].length));
+            }
+        }
+        float[] moyennesGeneralesParMatiere = new float[nbMatieres];
+        for(int i = 0; i < nbMatieres; i++){
+            //int totalMatiereGlobal = 0;
+            //int nbNotesGlobal = 0;
+            float sommeMoyennes = 0;
+            for(int j = 0; j < nbEleves; j++){
+                sommeMoyennes += moyParMatieresParEleve[i][j];
+            }
+            moyennesGeneralesParMatiere[i] = sommeMoyennes / nbEleves;
+            System.out.println("La moyenne générale dans la matière "  + i + " est " + moyennesGeneralesParMatiere[i]);
+        }
+        float totalToutesMatieres = 0;
+        for(int i = 0; i < nbMatieres; i++){
+            totalToutesMatieres += moyennesGeneralesParMatiere[i];
+        }
+        System.out.println("La moyenne générale toutes matières confondues est " + (totalToutesMatieres / nbMatieres));
